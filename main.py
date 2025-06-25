@@ -90,10 +90,11 @@ def show_results(ip_list):
 # main function
 if __name__ == "__main__":
     console.print("welcome to the network scanner")
-    console.print("do you want to add a custom port to check?")
-    custom_port = input("Enter the port number: ")
-    if custom_port:
-        PORTS_TO_CHECK.append(int(custom_port))
+    console.print(f"do you want to add a custom port to check ? available ports: {PORTS_TO_CHECK}")
+    if(input('Y or N: ').lower() == 'y'):
+        custom_port = input("Enter the custom port number to scan: ")
+        if custom_port:
+            PORTS_TO_CHECK.append(int(custom_port))
     subnet = get_local_network()
     ips = scan_network(subnet)
     show_results(ips)
